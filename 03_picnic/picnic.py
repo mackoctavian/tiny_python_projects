@@ -21,11 +21,14 @@ def get_args():
                         nargs='+',
                         help='Item(s) to bring')
 
-    parser.add_argument('-s',
-                        '--sorted',
-                        help='Sort the items',
-                        action='store_true',)
+    parser.add_argument(
+        '-s',
+        '--sorted',
+        help='Sort the items',
+        action='store_true',
+    )
 
+    parser.add_argument('-c', '--char', help='The word separate character')
     # parser.add_argument('-i',
     #                     '--int',
     #                     help='A named integer argument',
@@ -65,6 +68,8 @@ def main():
     # print(f'flag_arg = "{flag_arg}"')
     # print(f'positional = "{pos_arg}"')
     items = args.item
+    separator = args.char
+
     bringing = ''
 
     if args.sorted:
@@ -76,10 +81,11 @@ def main():
         bringing = ' and '.join(items)
     else:
         items[-1] = 'and ' + items[-1]
-        bringing = ', '.join(items)
-
+        if separator in [',','.','/','<']:
+            bringing = separator.join(items)
+        else:
+            bringing = ', '.join(items)
     print(f'You are bringing {bringing}.')
-
 
 
 # --------------------------------------------------
