@@ -20,4 +20,4 @@ def main():
     print(f'Ahoy, Captain, {article} {word} off the larboard bow!')  
 
 if __name__ == '__main__':
-     main()
+    main()
